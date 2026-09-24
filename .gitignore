@@ -1,0 +1,9 @@
+node_modules/
+.next/
+.env
+prisma/*.db
+*.log
+.mysql-data/
+.mysql-data-v2/
+.mysql-data-v2-undo-backup/
+my.ini

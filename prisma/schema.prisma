@@ -1,0 +1,102 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Category {
+  id          Int       @id @default(autoincrement())
+  nameAr      String
+  nameEn      String
+  slug        String    @unique
+  descriptionAr String? @db.Text
+  descriptionEn String? @db.Text
+  parentId    Int?
+  parent      Category? @relation("CategoryTree", fields: [parentId], references: [id])
+  children    Category[] @relation("CategoryTree")
+  products    Product[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+}
+
+model Product {
+  id            Int      @id @default(autoincrement())
+  nameAr        String
+  nameEn        String
+  slug          String   @unique
+  brandAr       String?
+  brandEn       String?
+  descriptionAr String?  @db.Text
+  descriptionEn String?  @db.Text
+  price         Decimal  @db.Decimal(10, 2)
+  oldPrice      Decimal? @db.Decimal(10, 2)
+  unit          String
+  stock         Int      @default(0)
+  image         String?
+  originAr      String?
+  originEn      String?
+  ingredientsAr String?  @db.Text
+  ingredientsEn String?  @db.Text
+  nutrition     Json?
+  halal         Boolean  @default(true)
+  categoryId    Int
+  category      Category @relation(fields: [categoryId], references: [id])
+  orderItems    OrderItem[]
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  @@index([categoryId])
+  @@index([brandAr])
+}
+
+model Customer {
+  id        Int      @id @default(autoincrement())
+  name      String
+  phone     String   @unique
+  email     String?  @unique
+  address   String?  @db.Text
+  orders    Order[]
+  createdAt DateTime @default(now())
+}
+
+model Order {
+  id             Int         @id @default(autoincrement())
+  status         OrderStatus @default(PENDING)
+  deliveryType   DeliveryType
+  deliverySlot   String?
+  address        String      @db.Text
+  total          Decimal     @db.Decimal(10, 2)
+  paymentMethod  String      @default("CASH_ON_DELIVERY")
+  customerId     Int?
+  customer       Customer?   @relation(fields: [customerId], references: [id])
+  items          OrderItem[]
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
+}
+
+model OrderItem {
+  id        Int      @id @default(autoincrement())
+  quantity  Int
+  unitPrice Decimal  @db.Decimal(10, 2)
+  orderId   Int
+  productId Int
+  order     Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product   Product  @relation(fields: [productId], references: [id])
+}
+
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  PREPARING
+  OUT_FOR_DELIVERY
+  DELIVERED
+  CANCELLED
+}
+
+enum DeliveryType {
+  EXPRESS
+  SCHEDULED
+}

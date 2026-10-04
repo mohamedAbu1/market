@@ -11,7 +11,7 @@ const labels: Record<string, [string, string, string, string]> = {
   "home-care": ["عناية بالمنزل", "Home Care", "مستلزم منزلي", "Home essential"], "dairy-eggs": ["ألبان وأجبان", "Dairy & Eggs", "منتج طازج للفطور", "Fresh breakfast essential"],
   "meat-poultry": ["لحوم ودواجن", "Meat & Poultry", "اختيار طازج", "Fresh selection"]
 };
-const asset = (name: string) => `/products/imported/${name}`;
+const asset = (name: string) => name.startsWith("/") ? name : `/products/imported/${name}`;
 type Raw = [string,string,string,string,number,string,string,string];
 const raw: Raw[] = [
 ["عصير مانجو توتي فروتي","Tutti Frutti Mango Juice","Tutti Frutti","juices",39,"250 مل","d9d55cc638cc57fbde66380c769180c7.png","#fff0d6"],
@@ -71,20 +71,20 @@ raw.push(
 ,["بصل أحمر طازج","Fresh Red Onion","Malek Market Fresh","fruits-vegetables",26,"1 كجم","79c32b6e05984c24d8f7e38514bc46bb.png","#f8eafa"]
 );
 raw.push(
-["خضروات مشكلة مجمدة","Frozen Mixed Vegetables","Malek Market","frozen-food",79,"750 جم","frozen-mixed-vegetables-3d.png","#eaf4ff"],
-["بيتزا بيبروني مجمدة","Frozen Pepperoni Pizza","Malek Market","frozen-food",129,"400 جم","frozen-pizza-3d.png","#fff0e7"],
-["ناجتس دجاج مجمدة","Frozen Chicken Nuggets","Malek Market","frozen-food",115,"500 جم","frozen-nuggets-3d.png","#fff4dd"],
-["أصابع سمك مجمدة","Frozen Fish Sticks","Malek Market","frozen-food",139,"400 جم","frozen-fish-sticks-3d.png","#eaf6ff"],
-["آيس كريم فراولة وفانيليا","Strawberry Vanilla Ice Cream","Malek Market","frozen-food",95,"1 لتر","frozen-ice-cream-3d.png","#fff0f7"],
-["ذرة حلوة مجمدة","Frozen Sweet Corn","Malek Market","frozen-food",65,"400 جم","frozen-corn-3d.png","#fff8d9"]
+["خضروات مشكلة مجمدة","Frozen Mixed Vegetables","Malek Market","frozen-food",79,"750 جم","/product-icons/frozen-mixed-vegetables-alt-3d.png","#eaf4ff"],
+["بيتزا بيبروني مجمدة","Frozen Pepperoni Pizza","Malek Market","frozen-food",129,"400 جم","/product-icons/frozen-pepperoni-pizza-alt-3d.png","#fff0e7"],
+["ناجتس دجاج مجمدة","Frozen Chicken Nuggets","Malek Market","frozen-food",115,"500 جم","/product-icons/frozen-chicken-nuggets-alt-3d.png","#fff4dd"],
+["أصابع سمك مجمدة","Frozen Fish Sticks","Malek Market","frozen-food",139,"400 جم","/product-icons/frozen-fish-sticks-alt-3d.png","#eaf6ff"],
+["آيس كريم فراولة وفانيليا","Strawberry Vanilla Ice Cream","Malek Market","frozen-food",95,"1 لتر","/product-icons/strawberry-vanilla-ice-cream-alt-3d.png","#fff0f7"],
+["ذرة حلوة مجمدة","Frozen Sweet Corn","Malek Market","frozen-food",65,"400 جم","/product-icons/frozen-sweet-corn-alt-3d.png","#fff8d9"]
 );
 raw.push(
-["حليب كامل الدسم الطازج","Fresh Full Fat Milk","Malek Market Dairy","dairy-eggs",55,"1 لتر","milk-carton-3d.png","#eef8ff"],
-["بيض أبيض بلدي","Farm Fresh White Eggs","Malek Market Dairy","dairy-eggs",82,"12 بيضة","egg-carton-3d.png","#fff4e3"],
-["زبادي بالفراولة","Strawberry Yogurt Cup","Malek Market Dairy","dairy-eggs",24,"170 جم","yogurt-cup-3d.png","#fff0f5"],
-["جبن شيدر فاخر","Premium Cheddar Cheese","Malek Market Dairy","dairy-eggs",89,"250 جم","cheddar-wedge-3d.png","#fff7d8"],
-["زبدة طبيعية","Natural Butter","Malek Market Dairy","dairy-eggs",74,"200 جم","butter-3d.png","#fff8dc"],
-["قشطة طازجة","Fresh Cream","Malek Market Dairy","dairy-eggs",39,"170 جم","cream-bottle-3d.png","#f3f8ff"]
+["حليب كامل الدسم الطازج","Fresh Full Fat Milk","Malek Market Dairy","dairy-eggs",55,"1 لتر","/product-icons/fresh-full-fat-milk-alt-3d.png","#eef8ff"],
+["بيض أبيض بلدي","Farm Fresh White Eggs","Malek Market Dairy","dairy-eggs",82,"12 بيضة","/product-icons/farm-fresh-white-eggs-alt-3d.png","#fff4e3"],
+["زبادي بالفراولة","Strawberry Yogurt Cup","Malek Market Dairy","dairy-eggs",24,"170 جم","/product-icons/strawberry-yogurt-cup-alt-3d.png","#fff0f5"],
+["جبن شيدر فاخر","Premium Cheddar Cheese","Malek Market Dairy","dairy-eggs",89,"250 جم","/product-icons/premium-cheddar-cheese-alt-3d.png","#fff7d8"],
+["زبدة طبيعية","Natural Butter","Malek Market Dairy","dairy-eggs",74,"200 جم","/product-icons/natural-butter-alt-3d.png","#fff8dc"],
+["قشطة طازجة","Fresh Cream","Malek Market Dairy","dairy-eggs",39,"170 جم","/product-icons/fresh-cream-alt-3d.png","#f3f8ff"]
 );
 const englishUnit = (unit: string) => unit.replace("كجم", "kg").replace("جم", "g").replace("لتر", "L").replace("مل", "ml").replace("حبة", "piece").replace("حزمة", "bunch").replace("طبق 30", "30 eggs").replace("صندوق", "box");
 export const imageProducts: ImageProduct[] = raw.map(([name,nameEn,brand,categorySlug,price,unit,file,color], index) => {

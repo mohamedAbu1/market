@@ -168,3 +168,13 @@ body, .freshcart-page, .freshcart-page button, .freshcart-page input { font-fami
 .freshcart-page input::placeholder { font-family:inherit; }
 @media(max-width:700px){.footer-grid{grid-template-columns:1fr 1fr;gap:24px}.footer-brand{grid-column:1/-1}.footer-bottom{display:grid;gap:8px}.freshcart-page.is-en .fresh-actions{direction:ltr}}
 @media(max-width:700px){.delivery-card{min-height:430px}.delivery-art{height:215px}}
+/* Final storefront layout polish */
+.deal-grid { grid-template-columns:repeat(4,minmax(0,1fr)); }
+.fresh-hero { transition:background .5s ease, box-shadow .5s ease; }
+.fresh-hero.hero-slide-1 { background:linear-gradient(115deg,#fff7dc,#e6f2c6 55%,#c3e3b0); }
+.fresh-hero.hero-slide-2 { background:linear-gradient(115deg,#e2f4fa,#d9f0dc 55%,#b8dfbb); }
+.hero-text { animation:heroTextIn .45s ease both; }
+.scene-copy > span { display:inline; }
+@keyframes heroTextIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+@media(max-width:1100px){.deal-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:700px){.deal-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}

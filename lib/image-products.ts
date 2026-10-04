@@ -7,7 +7,7 @@ export type ImageProduct = {
 const labels: Record<string, [string, string, string, string]> = {
   juices: ["مشروبات", "Beverages", "عصير", "Juice"], "water-soft-drinks": ["مشروبات", "Beverages", "مشروب منعش", "Refreshing drink"],
   "personal-care": ["عناية شخصية", "Personal Care", "منتج عناية يومية", "Daily care product"], "oils-ghee": ["بقالة", "Grocery", "زيت طبخ", "Cooking oil"],
-  "sugar-honey-jam": ["بقالة", "Grocery", "منتج أساسي للمطبخ", "Pantry essential"], "fruits-vegetables": ["خضار وفاكهة", "Fruits & Vegetables", "منتج طازج", "Fresh produce"],
+  "sugar-honey-jam": ["بقالة", "Grocery", "منتج أساسي للمطبخ", "Pantry essential"], "fruits-vegetables": ["خضار وفاكهة", "Fruits & Vegetables", "منتج طازج", "Fresh produce"], "frozen-food": ["مجمدات", "Frozen Food", "منتج مجمد عالي الجودة", "Quality frozen essential"],
   "home-care": ["عناية بالمنزل", "Home Care", "مستلزم منزلي", "Home essential"], "dairy-eggs": ["ألبان وأجبان", "Dairy & Eggs", "منتج طازج للفطور", "Fresh breakfast essential"],
   "meat-poultry": ["لحوم ودواجن", "Meat & Poultry", "اختيار طازج", "Fresh selection"]
 };
@@ -69,6 +69,22 @@ raw.push(
 ["دجاجة كاملة طازجة","Fresh Whole Chicken","Malek Market Fresh","meat-poultry",189,"1 كجم","3183726f3fa21086eb5869ad1504a4d6.png","#fff0ea"],["صدور دجاج طازجة","Fresh Chicken Breast","Malek Market Fresh","meat-poultry",179.9,"1 كجم","87fe46b819d65683d555a3e4b54b9ec3.png","#fff0ea"]
 ,["كرنب أخضر طازج","Fresh Green Cabbage","Malek Market Fresh","fruits-vegetables",29,"حبة","0d1353da2f66b0b469099262015922cc.png","#eef8e9"]
 ,["بصل أحمر طازج","Fresh Red Onion","Malek Market Fresh","fruits-vegetables",26,"1 كجم","79c32b6e05984c24d8f7e38514bc46bb.png","#f8eafa"]
+);
+raw.push(
+["خضروات مشكلة مجمدة","Frozen Mixed Vegetables","Malek Market","frozen-food",79,"750 جم","frozen-mixed-vegetables-3d.png","#eaf4ff"],
+["بيتزا بيبروني مجمدة","Frozen Pepperoni Pizza","Malek Market","frozen-food",129,"400 جم","frozen-pizza-3d.png","#fff0e7"],
+["ناجتس دجاج مجمدة","Frozen Chicken Nuggets","Malek Market","frozen-food",115,"500 جم","frozen-nuggets-3d.png","#fff4dd"],
+["أصابع سمك مجمدة","Frozen Fish Sticks","Malek Market","frozen-food",139,"400 جم","frozen-fish-sticks-3d.png","#eaf6ff"],
+["آيس كريم فراولة وفانيليا","Strawberry Vanilla Ice Cream","Malek Market","frozen-food",95,"1 لتر","frozen-ice-cream-3d.png","#fff0f7"],
+["ذرة حلوة مجمدة","Frozen Sweet Corn","Malek Market","frozen-food",65,"400 جم","frozen-corn-3d.png","#fff8d9"]
+);
+raw.push(
+["حليب كامل الدسم الطازج","Fresh Full Fat Milk","Malek Market Dairy","dairy-eggs",55,"1 لتر","milk-carton-3d.png","#eef8ff"],
+["بيض أبيض بلدي","Farm Fresh White Eggs","Malek Market Dairy","dairy-eggs",82,"12 بيضة","egg-carton-3d.png","#fff4e3"],
+["زبادي بالفراولة","Strawberry Yogurt Cup","Malek Market Dairy","dairy-eggs",24,"170 جم","yogurt-cup-3d.png","#fff0f5"],
+["جبن شيدر فاخر","Premium Cheddar Cheese","Malek Market Dairy","dairy-eggs",89,"250 جم","cheddar-wedge-3d.png","#fff7d8"],
+["زبدة طبيعية","Natural Butter","Malek Market Dairy","dairy-eggs",74,"200 جم","butter-3d.png","#fff8dc"],
+["قشطة طازجة","Fresh Cream","Malek Market Dairy","dairy-eggs",39,"170 جم","cream-bottle-3d.png","#f3f8ff"]
 );
 const englishUnit = (unit: string) => unit.replace("كجم", "kg").replace("جم", "g").replace("لتر", "L").replace("مل", "ml").replace("حبة", "piece").replace("حزمة", "bunch").replace("طبق 30", "30 eggs").replace("صندوق", "box");
 export const imageProducts: ImageProduct[] = raw.map(([name,nameEn,brand,categorySlug,price,unit,file,color], index) => {

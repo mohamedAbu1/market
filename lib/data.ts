@@ -1,4 +1,5 @@
 import { imageProducts } from "@/lib/image-products";
+import { iconCatalog } from "@/lib/icon-catalog";
 export type Product = { id: number; name: string; nameEn?: string; brand: string; brandEn?: string; category: string; categorySlug?: string; price: number; oldPrice?: number; unit: string; unitEn?: string; image: string; color: string; rating: number; badge?: string; badgeEn?: string };
 export const categories = [
   { name: "خضار وفاكهة", nameEn: "Fruits & Vegetables", icon: "🍎", tone: "bg-red-50" }, { name: "ألبان وأجبان", nameEn: "Dairy & Eggs", icon: "🥛", tone: "bg-blue-50" },
@@ -19,6 +20,6 @@ const baseProducts: Product[] = [
   { id: 8, name: "منظف أرضيات برائحة الليمون", nameEn: "Lemon Floor Cleaner", brand: "بريل", brandEn: "Pril", category: "عناية بالمنزل", categorySlug: "home-care", price: 74.95, oldPrice: 86, unit: "1 لتر", unitEn: "1 L", image: "/products/lemon-floor-cleaner.svg", color: "#e6f8d9", rating: 4.6, badge: "خصم 13%", badgeEn: "13% off" }
 ];
 
-export const products: Product[] = [...baseProducts, ...imageProducts];
+export const products: Product[] = [...baseProducts, ...imageProducts, ...iconCatalog];
 
 
